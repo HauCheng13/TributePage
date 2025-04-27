@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # This runs the action whenever there’s a push to the 'main' branch
+      - main  # Trigger on push to 'main' branch
 
 permissions:
   contents: read
@@ -23,12 +23,13 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Step 3: Upload the files for deployment (root of your project)
+      # Step 3: Upload the files for deployment
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .  # Path to deploy, the whole repo is deployed
+          path: ./public  # Change this to the directory where your site files (index.html) are located (e.g., ./dist or ./public)
 
       # Step 4: Deploy the uploaded files to GitHub Pages
       - name: Deploy site
         uses: actions/deploy-pages@v4
+
